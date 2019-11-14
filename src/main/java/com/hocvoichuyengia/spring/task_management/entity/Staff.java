@@ -1,6 +1,8 @@
 package com.hocvoichuyengia.spring.task_management.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,12 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -42,17 +48,20 @@ public class Staff {
 	@Column(name="facebook")
 	private String facebook;
 
-	@OneToOne
-	@JoinColumn(name="create_by")
+	@ManyToOne
+	@JoinColumn(name="create_by" , referencedColumnName = "id")
+	@JsonBackReference
 	private Staff createBy;
+	
 	
 	@Column(name="create_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
 
 	
-	@OneToOne
-	@JoinColumn(name="update_by")
+	@ManyToOne
+	@JoinColumn(name="update_by" , referencedColumnName = "id")
+	@JsonBackReference
 	private Staff updateBy;
 	
 	@Column(name="update_time")

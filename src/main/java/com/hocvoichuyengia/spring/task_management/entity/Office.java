@@ -8,11 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -32,22 +34,25 @@ public class Office {
 	@JoinColumn(name="person_in_charge_id")
 	private Staff personInCharge;
 	
-	@OneToOne
-	@JoinColumn(name="create_by")
+	@ManyToOne
+	@JoinColumn(name="create_by" , referencedColumnName = "id")
+	@JsonBackReference
 	private Staff createBy;
+	
 	
 	@Column(name="create_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
 
-	@OneToOne
-	@JoinColumn(name="update_by")
+	
+	@ManyToOne
+	@JoinColumn(name="update_by" , referencedColumnName = "id")
+	@JsonBackReference
 	private Staff updateBy;
 	
 	@Column(name="update_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateTime;
-
 	
 	public Office() {
 

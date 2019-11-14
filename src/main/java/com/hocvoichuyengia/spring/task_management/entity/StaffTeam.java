@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -30,39 +31,42 @@ public class StaffTeam{
 	
 	@ManyToOne 
 	@JoinColumn(name= "staff_id")
-	private Staff staffId;
+	private Staff staff;
 	
 	@ManyToOne
 	@JoinColumn(name ="team_id")
-	private Team teamId;
+	private Team team;
 	
 	
-	@OneToOne
-	@JoinColumn(name="create_by")
+	@ManyToOne
+	@JoinColumn(name="create_by" , referencedColumnName = "id")
+	@JsonBackReference
 	private Staff createBy;
+	
 	
 	@Column(name="create_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
 
 	
-	@OneToOne
-	@JoinColumn(name="update_by")
+	@ManyToOne
+	@JoinColumn(name="update_by" , referencedColumnName = "id")
+	@JsonBackReference
 	private Staff updateBy;
 	
 	@Column(name="update_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateTime;
-
+	
 	public StaffTeam() {
 		
 	}
 
-	public StaffTeam(int id, Staff staffId, Team teamId, Staff createBy, Date createTime, Staff updateBy,
-			Date updateTime) {
+	public StaffTeam(int id, Staff staff, Team team, Staff createBy, Date createTime, Staff updateBy, Date updateTime) {
+		super();
 		this.id = id;
-		this.staffId = staffId;
-		this.teamId = teamId;
+		this.staff = staff;
+		this.team = team;
 		this.createBy = createBy;
 		this.createTime = createTime;
 		this.updateBy = updateBy;
@@ -77,20 +81,20 @@ public class StaffTeam{
 		this.id = id;
 	}
 
-	public Staff getStaffId() {
-		return staffId;
+	public Staff getStaff() {
+		return staff;
 	}
 
-	public void setStaffId(Staff staffId) {
-		this.staffId = staffId;
+	public void setStaff(Staff staff) {
+		this.staff = staff;
 	}
 
-	public Team getTeamId() {
-		return teamId;
+	public Team getTeam() {
+		return team;
 	}
 
-	public void setTeamId(Team teamId) {
-		this.teamId = teamId;
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
 	public Staff getCreateBy() {
@@ -124,6 +128,7 @@ public class StaffTeam{
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
+
 	
 }
 

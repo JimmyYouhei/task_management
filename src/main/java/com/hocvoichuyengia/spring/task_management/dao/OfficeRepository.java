@@ -6,4 +6,5 @@ import com.hocvoichuyengia.spring.task_management.entity.Office;
 
 public interface OfficeRepository extends JpaRepository<Office, Integer> {
 
+	
 }

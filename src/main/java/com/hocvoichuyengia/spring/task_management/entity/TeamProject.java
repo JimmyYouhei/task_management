@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name="team_project")
@@ -34,17 +36,20 @@ public class TeamProject{
     @JoinColumn(name ="project_id")
     private Project project;
 	
-	@OneToOne
-	@JoinColumn(name="create_by")
+	@ManyToOne
+	@JoinColumn(name="create_by" , referencedColumnName = "id")
+	@JsonBackReference
 	private Staff createBy;
+	
 	
 	@Column(name="create_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
 
 	
-	@OneToOne
-	@JoinColumn(name="update_by")
+	@ManyToOne
+	@JoinColumn(name="update_by" , referencedColumnName = "id")
+	@JsonBackReference
 	private Staff updateBy;
 	
 	@Column(name="update_time")

@@ -3,15 +3,19 @@ package com.hocvoichuyengia.spring.task_management.rest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hocvoichuyengia.spring.task_management.dao.StaffRepository;
+import com.hocvoichuyengia.spring.task_management.dao.StaffSubtaskRepository;
 import com.hocvoichuyengia.spring.task_management.dao.StaffTeamRepository;
 import com.hocvoichuyengia.spring.task_management.dao.SubtaskRepository;
 import com.hocvoichuyengia.spring.task_management.dao.TeamProjectRepository;
@@ -32,6 +36,12 @@ public class AssignableStaff {
 	
 	@Autowired
 	StaffTeamRepository staffTeamRepository;
+	
+	@Autowired
+	StaffSubtaskRepository staffSubtaskRepository;
+	
+	@Autowired
+	StaffRepository staffRepository;
 	
 	@GetMapping("/subtask/{id}")
 	List <Staff> assignableStaffs (@PathVariable int id) {
@@ -71,4 +81,13 @@ public class AssignableStaff {
 		
 	}
 	
+
+	@PostMapping("/subtask/{id}")
+	void assignStaff(@RequestBody Map<String, Object> payload) {
+		
+		int staffId = (int) payload.get("staffId");
+		System.out.println();
+		
+	}
+
 }

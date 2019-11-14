@@ -57,7 +57,7 @@ public class Subtask {
 	
 	@ManyToOne
 	@JoinColumn(name="create_by" , referencedColumnName = "id")
-	@JsonBackReference
+	@JsonBackReference("a")
 	private Staff createBy;
 	
 	
@@ -68,7 +68,7 @@ public class Subtask {
 	
 	@ManyToOne
 	@JoinColumn(name="update_by" , referencedColumnName = "id")
-	@JsonBackReference
+	@JsonBackReference("b")
 	private Staff updateBy;
 	
 	@Column(name="update_time")

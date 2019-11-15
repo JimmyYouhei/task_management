@@ -15,9 +15,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="staff_subtask")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class StaffSubtask {
 
 	@Id

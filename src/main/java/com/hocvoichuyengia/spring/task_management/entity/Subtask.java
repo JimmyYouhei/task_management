@@ -17,9 +17,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="subtask")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Subtask {
 	
 	@Id
@@ -35,7 +37,7 @@ public class Subtask {
 	
 	@ManyToOne
 	@JoinColumn(name = "task_category_id")
-	private TaskCategory taskCategoryId;
+	private TaskCategory taskCategory;
 	
 	
 	@Column(name="date_start")
@@ -79,14 +81,13 @@ public class Subtask {
 		super();
 	}
 
-	public Subtask(int id, String name, String description, TaskCategory taskCategoryId, Date dateStart,
-			Date dateFinish, Status status, String note, Staff createBy, Date createTime, Staff updateBy,
-			Date updateTime) {
+	public Subtask(int id, String name, String description, TaskCategory taskCategory, Date dateStart, Date dateFinish,
+			Status status, String note, Staff createBy, Date createTime, Staff updateBy, Date updateTime) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.taskCategoryId = taskCategoryId;
+		this.taskCategory = taskCategory;
 		this.dateStart = dateStart;
 		this.dateFinish = dateFinish;
 		this.status = status;
@@ -121,12 +122,12 @@ public class Subtask {
 		this.description = description;
 	}
 
-	public TaskCategory getTaskCategoryId() {
-		return taskCategoryId;
+	public TaskCategory getTaskCategory() {
+		return taskCategory;
 	}
 
-	public void setTaskCategoryId(TaskCategory taskCategoryId) {
-		this.taskCategoryId = taskCategoryId;
+	public void setTaskCategory(TaskCategory taskCategory) {
+		this.taskCategory = taskCategory;
 	}
 
 	public Date getDateStart() {

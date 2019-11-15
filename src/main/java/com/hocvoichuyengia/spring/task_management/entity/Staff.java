@@ -47,6 +47,11 @@ public class Staff {
 	
 	@Column(name="facebook")
 	private String facebook;
+	
+	@ManyToOne
+	@JoinColumn(name="office_id")
+	@JsonBackReference("c")
+	private Office office;
 
 	@ManyToOne
 	@JoinColumn(name="create_by" , referencedColumnName = "id")

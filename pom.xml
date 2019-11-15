@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.hocvoichuyengia.spring</groupId>
 	<artifactId>task_management</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.5-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>task_management</name>
 	<description>Simple Task Management API</description>

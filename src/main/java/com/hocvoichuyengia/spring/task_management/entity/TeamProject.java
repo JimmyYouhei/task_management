@@ -17,10 +17,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
 @Table(name="team_project")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TeamProject{
 	
 	@Id

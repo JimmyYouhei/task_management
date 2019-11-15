@@ -23,6 +23,7 @@ import com.hocvoichuyengia.spring.task_management.entity.Staff;
 import com.hocvoichuyengia.spring.task_management.entity.StaffTeam;
 import com.hocvoichuyengia.spring.task_management.entity.Subtask;
 import com.hocvoichuyengia.spring.task_management.entity.TeamProject;
+import com.hocvoichuyengia.spring.task_management.exception.NoSubtaskException;
 
 @RestController
 @RequestMapping("/assignable")
@@ -44,12 +45,12 @@ public class AssignableStaff {
 	StaffRepository staffRepository;
 	
 	@GetMapping("/subtask/{id}")
-	List <Staff> assignableStaffs (@PathVariable int id) {
+	List <Staff> assignableStaffs (@PathVariable int id) throws NoSubtaskException {
 		// find the subtask
 		Subtask subtask = subtaskRepository.findById(id).get();
 		
 		// find the subtask projectId
-		int projectId = subtask.getTaskCategoryId().getProject().getId();
+		int projectId = subtask.getTaskCategory().getProject().getId();
 		
 		List<TeamProject> teamProjects = teamProjectRepository.findByProjectId(projectId);
 	

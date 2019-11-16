@@ -1,1 +1,1 @@
-web: java -Dserver.port=8080 -war target/task_management-0.5-SNAPSHOT.war
+web: java -Dserver.port=8080 -jar target/task_management-0.5-SNAPSHOT.jar

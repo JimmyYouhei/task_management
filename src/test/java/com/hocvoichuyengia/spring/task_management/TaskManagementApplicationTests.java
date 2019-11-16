@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.hocvoichuyengia.spring.task_management;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class TaskManagementApplicationTests {
 
 	@Test
 	void contextLoads() {

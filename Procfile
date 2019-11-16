@@ -1,1 +1,1 @@
-web: java -Dserver.port=80
+web: java 

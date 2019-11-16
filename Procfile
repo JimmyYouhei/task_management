@@ -1,1 +1,1 @@
-web: java 
+web: java -Dserver.port=$PORT

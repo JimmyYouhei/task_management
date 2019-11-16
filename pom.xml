@@ -11,7 +11,7 @@
 	<groupId>com.hocvoichuyengia.spring</groupId>
 	<artifactId>task_management</artifactId>
 	<version>0.5-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>task_management</name>
 	<description>Simple Task Management API</description>
 

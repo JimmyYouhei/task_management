@@ -1,4 +1,4 @@
-package com.hocvoichuyengia.spring.task_management;
+package com.hvcg.api.task_management;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

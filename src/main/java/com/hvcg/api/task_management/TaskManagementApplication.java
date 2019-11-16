@@ -1,4 +1,4 @@
-package com.hocvoichuyengia.spring.task_management;
+package com.hvcg.api.task_management;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,7 +8,6 @@ public class TaskManagementApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TaskManagementApplication.class, args);
-		
 	}
 
 }

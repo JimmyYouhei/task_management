@@ -1,7 +1,9 @@
 package com.hvcg.api.task_management.entity;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -55,15 +58,17 @@ public class Project{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateTime;
 	
-
+	@OneToMany(mappedBy = "project" , cascade = CascadeType.ALL)
+	private Set<TaskCategory> taskCategories;
+	
 	public Project() {
 		
 	}
 	
-	
 
 	public Project(int id, String name, String description, String note, Staff createBy, Date createTime,
-			Staff updateBy, Date updateTime) {
+			Staff updateBy, Date updateTime, Set<TaskCategory> taskCategories) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -72,7 +77,9 @@ public class Project{
 		this.createTime = createTime;
 		this.updateBy = updateBy;
 		this.updateTime = updateTime;
+		this.taskCategories = taskCategories;
 	}
+
 
 
 
@@ -139,11 +146,18 @@ public class Project{
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-	
-	
-	
-	
-	
+
+
+
+	public Set<TaskCategory> getTaskCategories() {
+		return taskCategories;
+	}
+
+
+
+	public void setTaskCategories(Set<TaskCategory> taskCategories) {
+		this.taskCategories = taskCategories;
+	}
 	
 
 }

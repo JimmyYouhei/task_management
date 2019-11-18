@@ -1,7 +1,9 @@
 package com.hvcg.api.task_management.entity;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -58,13 +61,17 @@ public class TaskCategory {
 	@Column(name="update_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateTime;
+	
+	@OneToMany(mappedBy = "taskCategory" , cascade = CascadeType.ALL)
+	private Set<Subtask> subtasks;
 
 	public TaskCategory() {
 		
 	}
 
 	public TaskCategory(int id, Project project, String name, String description, String note, Staff createBy,
-			Date createTime, Staff updateBy, Date updateTime) {
+			Date createTime, Staff updateBy, Date updateTime, Set<Subtask> subtasks) {
+		super();
 		this.id = id;
 		this.project = project;
 		this.name = name;
@@ -74,7 +81,10 @@ public class TaskCategory {
 		this.createTime = createTime;
 		this.updateBy = updateBy;
 		this.updateTime = updateTime;
+		this.subtasks = subtasks;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -146,6 +156,14 @@ public class TaskCategory {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public Set<Subtask> getSubtasks() {
+		return subtasks;
+	}
+
+	public void setSubtasks(Set<Subtask> subtasks) {
+		this.subtasks = subtasks;
 	}
 	
 }

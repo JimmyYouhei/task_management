@@ -21,7 +21,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
     @ExceptionHandler
     ResponseEntity handleConstrantViolation(DataIntegrityViolationException e) {
     	
-    	return new ResponseEntity("Duplicate Entry ", new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    	return new ResponseEntity("Database Constraint violation", new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
     
     @ExceptionHandler

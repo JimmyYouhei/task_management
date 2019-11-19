@@ -1,10 +1,7 @@
 package com.hvcg.api.task_management.service;
 
-import java.util.List;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,7 +9,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.hvcg.api.task_management.constant.Role;
 import com.hvcg.api.task_management.dao.SecurityRepository;
+import com.hvcg.api.task_management.entity.Staff;
 import com.hvcg.api.task_management.entity.User;
 import com.hvcg.api.task_management.security.JwtProvider;
 
@@ -37,7 +36,6 @@ public class UserService {
 	}
 	
 	
-	// check the role
 	public Optional<String> signin (String username , String password){
 		Optional<String> token = Optional.empty();
 		Optional<User> user = securityRepository.findByUsername(username);
@@ -55,31 +53,17 @@ public class UserService {
 		return token;
 	}
 
-	
+	public Optional<User> signup(String username , String password , Staff staff , Role role){
+		Optional<User> user = Optional.empty();
+		
+		if(!securityRepository.findByUsername(username).isPresent()) {
+			user = Optional.of(securityRepository.saveAndFlush(
+					new User(username , passwordEncoder.encode(password) , 
+							role.toString() , staff)));
+		}
+		
+		return user;
+		
+	}
 	
 }
-
-/*
-@Service
-public class UserService {
-
-/*
-    public Optional<User> signup(String username, String password, String firstName, String lastName) {
-        LOGGER.info("New user attempting to sign in");
-        Optional<User> user = Optional.empty();
-        if (!userRepository.findByUsername(username).isPresent()) {
-            Optional<Role> role = roleRepository.findByRoleName("ROLE_CSR");
-            user = Optional.of(userRepository.save(new User(username,
-                            passwordEncoder.encode(password),
-                            role.get(),
-                            firstName,
-                            lastName)));
-        }
-        return user;
-    }
-
-    public List<User> getAll() {
-        return userRepository.findAll();
-    }
-}
-*/

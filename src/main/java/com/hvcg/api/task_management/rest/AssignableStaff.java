@@ -82,12 +82,4 @@ public class AssignableStaff {
 	}
 	
 
-	@PostMapping("/subtask/{id}")
-	void assignStaff(@RequestBody Map<String, Object> payload) {
-		
-		int staffId = (int) payload.get("staffId");
-		System.out.println();
-		
-	}
-
 }

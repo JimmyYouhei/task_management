@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,15 +28,18 @@ public class ChangeStaffDetailController {
 	@Autowired
 	private InternalStaffRepository internalStaffRepository;
 
+	
+	@GetMapping("/currentStaff")
+	public Staff getLoggedInStaffDetail() {
+	
+		return getCurrentLoggedInStaffDetail();
+		
+		
+	}
 
 	@PatchMapping("/currentStaff")
 	public Staff changeCurrentStaffDetail (@RequestBody StaffDetailDto staffDetailDto) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String username = authentication.getName();
-		
-		User user = securityRepository.findByUsername(username).get();
-		
-		Staff currentStaffDetail = user.getStaff();
+		Staff currentStaffDetail = getCurrentLoggedInStaffDetail();
 		
 		if(modifiedCurrentStaffDetail(currentStaffDetail, staffDetailDto)) {
 			currentStaffDetail.setUpdateTime(new Date());
@@ -44,6 +48,16 @@ public class ChangeStaffDetailController {
 			internalStaffRepository.saveAndFlush(currentStaffDetail);
 		}
 		
+		return currentStaffDetail;
+	}
+
+	private Staff getCurrentLoggedInStaffDetail() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		
+		User user = securityRepository.findByUsername(username).get();
+		
+		Staff currentStaffDetail = user.getStaff();
 		return currentStaffDetail;
 	}
 

@@ -1,4 +1,4 @@
-package com.hvcg.api.task_management.entity;
+package com.hvcg.api.task_management.constant;
 
 public enum Status {
 	

@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.hvcg.api.task_management.constant.Status;
 
 @Entity
 @Table(name="subtask")

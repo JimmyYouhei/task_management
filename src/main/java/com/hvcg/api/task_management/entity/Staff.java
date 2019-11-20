@@ -154,5 +154,14 @@ public class Staff {
 		this.updateTime = updateTime;
 	}
 
+	public Office getOffice() {
+		return office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	
 	
 }

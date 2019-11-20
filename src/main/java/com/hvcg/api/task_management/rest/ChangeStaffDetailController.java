@@ -17,7 +17,7 @@ import com.hvcg.api.task_management.entity.Staff;
 import com.hvcg.api.task_management.entity.User;
 
 @RestController
-@RequestMapping("/change")
+@RequestMapping("/detail")
 public class ChangeStaffDetailController {
 	
 	@Autowired

@@ -32,7 +32,8 @@ public class ChangeStaffDetailController {
 	@GetMapping("/currentStaff")
 	public Staff getLoggedInStaffDetail() {
 	
-		return getCurrentLoggedInStaffDetail();
+		Staff currentStaff = getCurrentLoggedInStaffDetail();
+		return currentStaff;
 		
 		
 	}

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -19,7 +18,6 @@ public class JwtProvider {
 
 	private final String ROLES_KEY = "role";
 	
-	private JwtParser parser;
 	
 	private String secretKey;
 	private long validityInMiliseconds;
@@ -34,7 +32,7 @@ public class JwtProvider {
 		
 	}
 	
-	// check back the role
+	
 	public String createToken(String username , String role) {
 		
 		Claims claims = Jwts.claims().setSubject(username);
@@ -48,6 +46,7 @@ public class JwtProvider {
 				.setIssuedAt(now)
 				.setExpiration(exDate)
 				.signWith(SignatureAlgorithm.HS256, secretKey)
+				.setHeaderParam("typ" , "JWT")
 				.compact();
 	}
 	

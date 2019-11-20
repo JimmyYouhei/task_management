@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-
 import com.hvcg.api.task_management.dao.SecurityRepository;
 import com.hvcg.api.task_management.entity.User;
 

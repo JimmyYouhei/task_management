@@ -28,11 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().cors().and().authorizeRequests()
+		http.csrf().disable().cors().disable().authorizeRequests()
 			.antMatchers("/security/login").permitAll()
 			.anyRequest().authenticated();
-		
-		//http.csrf().disable();
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
@@ -51,6 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       return new BCryptPasswordEncoder(12);
     }
 	
+    /*
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
     	CorsConfiguration configuration = new CorsConfiguration();
@@ -61,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	return source;
     	
     }
-	
+	*/
 }
 
 

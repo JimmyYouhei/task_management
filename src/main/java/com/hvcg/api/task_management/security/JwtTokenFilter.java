@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
@@ -38,6 +39,8 @@ public class JwtTokenFilter extends GenericFilterBean {
 				.setAuthentication(new PreAuthenticatedAuthenticationToken(userDetails, "" , userDetails.getAuthorities()));
 			});
 		});
+		
+		((HttpServletResponse)response).setHeader("Access-Control-Allow-Origin", "*");
 	
 		chain.doFilter(request, response);
 	}

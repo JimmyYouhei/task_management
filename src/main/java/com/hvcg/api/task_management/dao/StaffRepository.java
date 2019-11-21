@@ -5,13 +5,11 @@ import java.util.List;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.hvcg.api.task_management.entity.Staff;
 
-@Primary
-@RepositoryRestResource
+
 public interface StaffRepository extends JpaRepository<Staff, Integer> {
 
 	@PreAuthorize("hasRole('ADMIN')")

@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpServerErrorException;
 
 import com.hvcg.api.task_management.constant.Role;
+import com.hvcg.api.task_management.dao.InternalStaffRepository;
 import com.hvcg.api.task_management.dao.SecurityRepository;
 import com.hvcg.api.task_management.dao.StaffRepository;
 import com.hvcg.api.task_management.dto.LoginDto;
+import com.hvcg.api.task_management.entity.InternalStaff;
 import com.hvcg.api.task_management.entity.Staff;
 import com.hvcg.api.task_management.entity.User;
 import com.hvcg.api.task_management.service.UserService;
@@ -40,7 +42,7 @@ public class UserSecurityController {
 	private UserService userService;
 	
 	@Autowired
-	private StaffRepository staffRepository;
+	private InternalStaffRepository internalStaffRepository;
 	
 	@Autowired
 	private SecurityRepository securityRepository;
@@ -62,7 +64,7 @@ public class UserSecurityController {
 		
 		
 		Role role = Role.valueOf(loginDto.getRole());
-		Staff staff = staffRepository.findById(loginDto.getStaffId()).get();
+		InternalStaff staff = internalStaffRepository.findById(loginDto.getStaffId()).get();
 		
 		if (role ==null || staff == null ) {
 			throw new HttpServerErrorException(HttpStatus.BAD_REQUEST , "bad information input");

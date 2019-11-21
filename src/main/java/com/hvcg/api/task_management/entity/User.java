@@ -32,13 +32,14 @@ public class User {
 	
 	@OneToOne
 	@JoinColumn(name = "staff_id")
-	private Staff staff;
+	private InternalStaff staff;
 
 	public User() {
 		super();
 	}
 
-	public User( String username, String password, String role, Staff staff) {
+	public User( String username, String password, String role, InternalStaff staff) {
+
 		this.username = username;
 		this.password = password;
 		this.role = role;
@@ -77,13 +78,12 @@ public class User {
 		this.role = role;
 	}
 
-	public Staff getStaff() {
+	public InternalStaff getStaff() {
 		return staff;
 	}
 
-	public void setStaff(Staff staff) {
+	public void setStaff(InternalStaff staff) {
 		this.staff = staff;
 	}
-	
 
 }

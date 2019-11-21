@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hvcg.api.task_management.dao.InternalStaffRepository;
 import com.hvcg.api.task_management.dao.SecurityRepository;
 import com.hvcg.api.task_management.dto.StaffDetailDto;
+import com.hvcg.api.task_management.entity.InternalStaff;
 import com.hvcg.api.task_management.entity.Staff;
 import com.hvcg.api.task_management.entity.User;
 
@@ -30,17 +31,17 @@ public class ChangeStaffDetailController {
 
 	
 	@GetMapping("/currentStaff")
-	public Staff getLoggedInStaffDetail() {
+	public InternalStaff getLoggedInStaffDetail() {
 	
-		Staff currentStaff = getCurrentLoggedInStaffDetail();
+		InternalStaff currentStaff = getCurrentLoggedInStaffDetail();
 		return currentStaff;
 		
 		
 	}
 
 	@PatchMapping("/currentStaff")
-	public Staff changeCurrentStaffDetail (@RequestBody StaffDetailDto staffDetailDto) {
-		Staff currentStaffDetail = getCurrentLoggedInStaffDetail();
+	public InternalStaff changeCurrentStaffDetail (@RequestBody StaffDetailDto staffDetailDto) {
+		InternalStaff currentStaffDetail = getCurrentLoggedInStaffDetail();
 		
 		if(modifiedCurrentStaffDetail(currentStaffDetail, staffDetailDto)) {
 			currentStaffDetail.setUpdateTime(new Date());
@@ -52,17 +53,17 @@ public class ChangeStaffDetailController {
 		return currentStaffDetail;
 	}
 
-	private Staff getCurrentLoggedInStaffDetail() {
+	private InternalStaff getCurrentLoggedInStaffDetail() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = authentication.getName();
 		
 		User user = securityRepository.findByUsername(username).get();
 		
-		Staff currentStaffDetail = user.getStaff();
+		InternalStaff currentStaffDetail = user.getStaff();
 		return currentStaffDetail;
 	}
 
-	private boolean modifiedCurrentStaffDetail(Staff currentStaffDetail , StaffDetailDto staffDetailDto) {
+	private boolean modifiedCurrentStaffDetail(InternalStaff currentStaffDetail , StaffDetailDto staffDetailDto) {
 		boolean modified = false;
 		
 		if(staffDetailDto.getFullName() != null) {

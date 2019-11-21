@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.hvcg.api.task_management.constant.Role;
 import com.hvcg.api.task_management.dao.SecurityRepository;
+import com.hvcg.api.task_management.entity.InternalStaff;
 import com.hvcg.api.task_management.entity.Staff;
 import com.hvcg.api.task_management.entity.User;
 import com.hvcg.api.task_management.security.JwtProvider;
@@ -53,7 +54,7 @@ public class UserService {
 		return token;
 	}
 
-	public Optional<User> signup(String username , String password , Staff staff , Role role){
+	public Optional<User> signup(String username , String password , InternalStaff staff , Role role){
 		Optional<User> user = Optional.empty();
 		
 		if(!securityRepository.findByUsername(username).isPresent()) {

@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().cors().disable().authorizeRequests()
+		http.csrf().disable().cors().configurationSource(corsConfigurationSource()).and().authorizeRequests()
 			.antMatchers("/security/login").permitAll()
 			.anyRequest().authenticated();
 		
@@ -49,18 +49,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       return new BCryptPasswordEncoder(12);
     }
 	
-    /*
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
     	CorsConfiguration configuration = new CorsConfiguration();
     	configuration.setAllowedOrigins(Arrays.asList("*"));
     	configuration.setAllowedMethods(Arrays.asList("*"));
+    	configuration.setAllowCredentials(true);
+    	configuration.setAllowedHeaders(Arrays.asList("*"));
     	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     	source.registerCorsConfiguration("/**", configuration);
     	return source;
     	
     }
-	*/
+
 }
 
 

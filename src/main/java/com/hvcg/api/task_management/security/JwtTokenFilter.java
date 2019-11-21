@@ -40,7 +40,7 @@ public class JwtTokenFilter extends GenericFilterBean {
 			});
 		});
 		
-		//((HttpServletResponse)response).setHeader("Access-Control-Allow-Origin", "*");
+		((HttpServletResponse)response).setHeader("Access-Control-Allow-Origin", "*");
 	
 		chain.doFilter(request, response);
 	}

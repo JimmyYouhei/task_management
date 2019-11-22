@@ -51,7 +51,18 @@ public class UserService {
 			}
 		}
 		
-		return token;
+		StringBuilder jsonToken = new StringBuilder();
+		jsonToken.append("{");
+		jsonToken.append(System.lineSeparator());
+		jsonToken.append("\"");
+		jsonToken.append("token");
+		jsonToken.append("\"");
+		jsonToken.append(" : ");
+		jsonToken.append(token.get());
+		jsonToken.append(System.lineSeparator());
+		jsonToken.append("}");
+		
+		return Optional.of(jsonToken.toString());
 	}
 
 	public Optional<User> signup(String username , String password , InternalStaff staff , Role role){

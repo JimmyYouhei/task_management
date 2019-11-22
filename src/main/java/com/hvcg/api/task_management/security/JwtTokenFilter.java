@@ -39,8 +39,6 @@ public class JwtTokenFilter extends GenericFilterBean {
 				.setAuthentication(new PreAuthenticatedAuthenticationToken(userDetails, "" , userDetails.getAuthorities()));
 			});
 		});
-		
-		((HttpServletResponse)response).setHeader("Access-Control-Allow-Origin", "*");
 	
 		chain.doFilter(request, response);
 	}

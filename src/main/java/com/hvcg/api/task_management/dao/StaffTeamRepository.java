@@ -12,6 +12,7 @@ public interface StaffTeamRepository extends JpaRepository<StaffTeam, Integer> {
 	List<StaffTeam> findByTeamId(int id);
 	
 	
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	void deleteById(Integer id);

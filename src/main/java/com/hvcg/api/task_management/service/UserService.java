@@ -58,7 +58,9 @@ public class UserService {
 		jsonToken.append("token");
 		jsonToken.append("\"");
 		jsonToken.append(" : ");
+		jsonToken.append("\"");
 		jsonToken.append(token.get());
+		jsonToken.append("\"");
 		jsonToken.append(System.lineSeparator());
 		jsonToken.append("}");
 		

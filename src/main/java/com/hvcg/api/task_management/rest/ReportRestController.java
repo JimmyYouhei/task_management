@@ -1,5 +1,7 @@
 package com.hvcg.api.task_management.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,24 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hvcg.api.task_management.model.StaffReport;
 import com.hvcg.api.task_management.repository.util.StaffReportRowMapper;
+import com.hvcg.api.task_management.service.StaffReportService;
 
 @RestController
 @RequestMapping("/report")
 public class ReportRestController {
 	
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+	private StaffReportService staffReportService;
+	
 	
 	@GetMapping("/staff/{staffId}")
 	public StaffReport getStaffReport(@PathVariable int staffId) {
 		
-		StaffReport staffReport = jdbcTemplate.queryForObject("SELECT st.id , st.full_name , st.date_of_birth , st.phone_number , st.email , st.facebook , se.username , se.role"
-				+ "  FROM staff AS st"
-				+ "  INNER JOIN security as se"
-				+ "  ON st.id = se.staff_id"
-				+ "  WHERE st.id =?", new StaffReportRowMapper() , staffId);
-		
-		return staffReport;
+		return staffReportService.getFullStaffReportById(staffId);
 	}
+
 	
 }

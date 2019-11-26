@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.hvcg.api.task_management.constant.Role;
 import com.hvcg.api.task_management.dao.SecurityRepository;
 import com.hvcg.api.task_management.entity.InternalStaff;
-import com.hvcg.api.task_management.entity.Staff;
 import com.hvcg.api.task_management.entity.User;
 import com.hvcg.api.task_management.security.JwtProvider;
 
@@ -51,7 +50,20 @@ public class UserService {
 			}
 		}
 		
-		return token;
+		StringBuilder jsonToken = new StringBuilder();
+		jsonToken.append("{");
+		jsonToken.append(System.lineSeparator());
+		jsonToken.append("\"");
+		jsonToken.append("token");
+		jsonToken.append("\"");
+		jsonToken.append(" : ");
+		jsonToken.append("\"");
+		jsonToken.append(token.get());
+		jsonToken.append("\"");
+		jsonToken.append(System.lineSeparator());
+		jsonToken.append("}");
+		
+		return Optional.of(jsonToken.toString());
 	}
 
 	public Optional<User> signup(String username , String password , InternalStaff staff , Role role){

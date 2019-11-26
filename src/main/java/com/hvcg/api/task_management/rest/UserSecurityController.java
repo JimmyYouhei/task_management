@@ -24,10 +24,8 @@ import org.springframework.web.client.HttpServerErrorException;
 import com.hvcg.api.task_management.constant.Role;
 import com.hvcg.api.task_management.dao.InternalStaffRepository;
 import com.hvcg.api.task_management.dao.SecurityRepository;
-import com.hvcg.api.task_management.dao.StaffRepository;
 import com.hvcg.api.task_management.dto.LoginDto;
 import com.hvcg.api.task_management.entity.InternalStaff;
-import com.hvcg.api.task_management.entity.Staff;
 import com.hvcg.api.task_management.entity.User;
 import com.hvcg.api.task_management.service.UserService;
 

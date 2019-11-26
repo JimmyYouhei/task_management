@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 	
 
-    /*
+  
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
     	CorsConfiguration configuration = new CorsConfiguration();
@@ -63,7 +63,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	return source;
     	
     }
-	*/
+	
 }
-
-

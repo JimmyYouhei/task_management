@@ -15,7 +15,6 @@ import com.hvcg.api.task_management.dao.InternalStaffRepository;
 import com.hvcg.api.task_management.dao.SecurityRepository;
 import com.hvcg.api.task_management.dto.StaffDetailDto;
 import com.hvcg.api.task_management.entity.InternalStaff;
-import com.hvcg.api.task_management.entity.Staff;
 import com.hvcg.api.task_management.entity.User;
 
 @RestController

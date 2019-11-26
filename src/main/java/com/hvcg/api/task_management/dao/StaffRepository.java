@@ -3,7 +3,6 @@ package com.hvcg.api.task_management.dao;
 
 import java.util.List;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 

@@ -1,13 +1,17 @@
 package com.hvcg.api.task_management.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.hvcg.api.task_management.entity.Office;
+import com.hvcg.api.task_management.entity.Staff;
 
 public interface OfficeRepository extends JpaRepository<Office, Integer> {
+	
+	Optional<Staff> findByPersonInChargeId(int id);
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override

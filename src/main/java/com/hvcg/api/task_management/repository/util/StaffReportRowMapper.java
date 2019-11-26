@@ -3,10 +3,8 @@ package com.hvcg.api.task_management.repository.util;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 
-import org.apache.commons.collections4.map.LinkedMap;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.hvcg.api.task_management.constant.Status;

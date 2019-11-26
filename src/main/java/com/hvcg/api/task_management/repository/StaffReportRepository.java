@@ -1,7 +1,5 @@
 package com.hvcg.api.task_management.repository;
 
-import java.util.List;
-
 import com.hvcg.api.task_management.model.StaffReport;
 
 public interface StaffReportRepository {
@@ -17,8 +15,6 @@ public interface StaffReportRepository {
 	StaffReport getTeamsById(int staffId);
 	
 	StaffReport getProjectsById(int staffId);
-	
-	// StaffReport getTaskCategoriesById(int staffId);
 	
 	StaffReport getSubtaskById(int staffId);
 	

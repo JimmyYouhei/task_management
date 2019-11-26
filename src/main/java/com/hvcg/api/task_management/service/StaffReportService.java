@@ -1,7 +1,5 @@
 package com.hvcg.api.task_management.service;
 
-import java.util.List;
-
 import com.hvcg.api.task_management.model.StaffReport;
 
 public interface StaffReportService {

@@ -2,7 +2,6 @@ package com.hvcg.api.task_management.repository;
 
 import java.util.List;
 
-import org.apache.commons.collections4.map.LinkedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -147,38 +146,6 @@ public class StaffReportRepositoryImpl implements StaffReportRepository {
 		
 		return result;
 	}
-
-	/*
-	@Override
-	public StaffReport getTaskCategoriesById(int staffId) {
-		
-		List<StaffReport> staffReports = jdbcTemplate.query("SELECT tc.name AS task_category_name , " +
-				" tc.description AS task_category_description" +
-				" FROM staff AS st" +
-				" INNER JOIN staff_subtask AS stsu" +
-				" ON st.id = stsu.staff_id" +
-				" INNER JOIN subtask AS su" +
-				" ON stsu.subtask_id = su.id" +
-				" INNER JOIN task_category AS tc" +
-				" ON tc.id = su.task_category_id" +
-				" WHERE st.id = ?" , new StaffReportRowMapper() , staffId);
-		
-		StaffReport result = staffReports.get(0);
-		
-		if(staffReports.size() > 1) {
-			
-			for (int i = 1; i < staffReports.size(); i++) {
-				
-				result.getTaskCategories().put( staffReports.get(i).getTaskCategories().get(0) ,
-						staffReports.get(i).getTaskCategories().getValue(0));
-			}
-			
-		} 
-		
-		return result;
-	}
-
-	 */
 	
 	
 	@Override

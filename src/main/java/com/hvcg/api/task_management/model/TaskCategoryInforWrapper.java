@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * 
+ * class to contain Task Category report
+ * 
+ * @author JY
+ *
+ */
+
 public class TaskCategoryInforWrapper {
 	
 	private String taskCategoryName;

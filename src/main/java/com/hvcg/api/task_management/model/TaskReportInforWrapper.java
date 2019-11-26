@@ -1,5 +1,14 @@
 package com.hvcg.api.task_management.model;
 
+
+/**
+ * 
+ * class to contain Task Report Summary
+ * 
+ * @author JY
+ *
+ */
+
 public class TaskReportInforWrapper {
 	
 	private int numberOfTasks;

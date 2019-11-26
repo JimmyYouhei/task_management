@@ -7,6 +7,17 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.hvcg.api.task_management.entity.TaskCategory;
 
+/**
+ * 
+ * Spring data JpaRepository to quickly handle Task Category data and with default Spring Data Rest API exposure
+ * 
+ * some method were added with extra Annotation to restricted to ADMIN role only
+ * 
+ * @author JY
+ *
+ */
+
+
 public interface TaskCategoryRepository extends JpaRepository<TaskCategory, Integer> {
 	
 	

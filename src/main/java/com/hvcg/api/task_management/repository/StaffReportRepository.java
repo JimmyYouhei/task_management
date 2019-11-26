@@ -2,6 +2,14 @@ package com.hvcg.api.task_management.repository;
 
 import com.hvcg.api.task_management.model.StaffReport;
 
+/**
+ * 
+ * staff Report repository interface to generate Staff Report
+ * 
+ * @author JY
+ *
+ */
+
 public interface StaffReportRepository {
 
 	StaffReport getFullStaffReportById(int staffId);

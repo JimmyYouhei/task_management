@@ -7,6 +7,15 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.hvcg.api.task_management.model.TaskReportInforWrapper;
 
+
+/**
+ * 
+ * RowMapper implement to use for Spring JDBC
+ * 
+ * @author JY
+ *
+ */
+
 public class TaskReportRowMapper implements RowMapper<TaskReportInforWrapper>{
 
 	@Override

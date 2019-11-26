@@ -3,6 +3,15 @@ package com.hvcg.api.task_management.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 
+ * class to contain project report infor
+ * 
+ * @author JY
+ *
+ */
+
 public class ProjectInforWrapper {
 	
 	private String projectName;

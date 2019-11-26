@@ -6,6 +6,15 @@ import java.util.List;
 
 import org.apache.commons.collections4.map.LinkedMap;
 
+
+/**
+ * 
+ * class to contain Staff report
+ * 
+ * @author JY
+ *
+ */
+
 public class StaffReport {
 	
 	private int id;
@@ -29,8 +38,6 @@ public class StaffReport {
 	private LinkedMap<String, String> teams = new LinkedMap<>();
 	
 	private LinkedMap<String, String> projectsParticipated = new LinkedMap<>();
-	
-	//private LinkedMap<String , String> taskCategories = new LinkedMap<>();
 	
 	private List<ProjectInforWrapper> subtasksDetail = new ArrayList<>();
 

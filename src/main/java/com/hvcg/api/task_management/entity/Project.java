@@ -19,6 +19,17 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+/**
+ * class to map project table 
+ * 
+ * JsonBackReference annotation is to avoid infinitive recursion 
+ * 
+ * 
+ * @author JY
+ *
+ */
+
 @Entity
 @Table(name="project")
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -4,6 +4,14 @@ import java.util.Date;
 
 import com.hvcg.api.task_management.constant.Status;
 
+/**
+ * 
+ * Class to contain a task report row 
+ * 
+ * @author JY
+ *
+ */
+
 public class TaskRowInforWrapper {
 	
 	private int taskId;

@@ -5,6 +5,13 @@ import java.util.List;
 
 import com.hvcg.api.task_management.entity.InternalStaff;
 
+/**
+ * class to contain office report
+ * 
+ * @author JY
+ *
+ */
+
 public class OfficeReport {
 	
 	private int id;

@@ -19,6 +19,17 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hvcg.api.task_management.constant.Status;
 
+/**
+ * 
+ * class to map subtask table 
+ * 
+ * JsonBackReference annotation is to avoid infinitive recursion 
+ * 
+ * @author JY
+ *
+ */
+
+
 @Entity
 @Table(name="subtask")
 @JsonIgnoreProperties(ignoreUnknown = true)

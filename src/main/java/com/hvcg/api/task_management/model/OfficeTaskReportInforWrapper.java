@@ -2,6 +2,14 @@ package com.hvcg.api.task_management.model;
 
 import org.apache.commons.collections4.map.LinkedMap;
 
+/**
+ * 
+ * class to contain Office's task summarry
+ * 
+ * @author JY
+ *
+ */
+
 public class OfficeTaskReportInforWrapper {
 	
 	

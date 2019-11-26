@@ -9,8 +9,19 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import com.hvcg.api.task_management.entity.Office;
 import com.hvcg.api.task_management.entity.Staff;
 
+/**
+ * 
+ * Spring data JpaRepository to quickly handle office data and with default Spring Data Rest API exposure
+ * 
+ * some method were added with extra Annotation to restricted to ADMIN role only
+ * 
+ * @author JY
+ *
+ */
+
 public interface OfficeRepository extends JpaRepository<Office, Integer> {
 	
+	// Spring magic: the name of this method is not random
 	Optional<Staff> findByPersonInChargeId(int id);
 
 	@PreAuthorize("hasRole('ADMIN')")

@@ -2,6 +2,15 @@ package com.hvcg.api.task_management.dto;
 
 import java.util.Date;
 
+/**
+ * 
+ * Data transfer object to quickly handle JSON staff data
+ * 
+ * @author JY
+ *
+ */
+
+
 public class StaffDetailDto {
 	
 	private String fullName;

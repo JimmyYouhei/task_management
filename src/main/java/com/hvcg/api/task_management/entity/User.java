@@ -11,6 +11,18 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+/**
+ * 
+ * class to map security table 
+ * 
+ * JsonBackReference annotation is to avoid infinitive recursion 
+ * 
+ * @author JY
+ *
+ */
+
+
 @Entity
 @Table(name="security")
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -16,6 +16,17 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+/**
+ * 
+ * class to map team table 
+ * 
+ * JsonBackReference annotation is to avoid infinitive recursion 
+ * 
+ * @author JY
+ *
+ */
+
 @Entity
 @Table(name="team")
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -21,6 +21,15 @@ import com.hvcg.api.task_management.entity.Subtask;
 import com.hvcg.api.task_management.entity.TeamProject;
 import com.hvcg.api.task_management.exception.NoSubtaskException;
 
+
+/**
+ * 
+ * Rest API to find Assignable staff for a subtask by Id 
+ * 
+ * @author JY
+ *
+ */
+
 @RestController
 @RequestMapping("/assignable")
 public class AssignableStaff {

@@ -15,6 +15,14 @@ import com.hvcg.api.task_management.entity.InternalStaff;
 import com.hvcg.api.task_management.entity.User;
 import com.hvcg.api.task_management.security.JwtProvider;
 
+/**
+ * 
+ * Service to return Json Web Token or make new User
+ * 
+ * @author JY
+ *
+ */
+
 @Service
 public class UserService {
 

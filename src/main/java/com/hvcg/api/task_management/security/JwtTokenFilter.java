@@ -13,7 +13,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.web.filter.GenericFilterBean;
 
-
+/**
+ * 
+ * filter to validate Json Web Token
+ * 
+ * @author JY
+ *
+ */
 
 public class JwtTokenFilter extends GenericFilterBean {
 

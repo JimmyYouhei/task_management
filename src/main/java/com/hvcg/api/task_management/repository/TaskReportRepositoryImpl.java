@@ -17,6 +17,14 @@ import com.hvcg.api.task_management.repository.util.ListStaffIdRowMapper;
 import com.hvcg.api.task_management.repository.util.TaskDetailRowMapper;
 import com.hvcg.api.task_management.repository.util.TaskReportRowMapper;
 
+/**
+ * 
+ * Task Report Repository implementation to generate task report
+ * 
+ * @author JY
+ *
+ */
+
 @Repository
 public class TaskReportRepositoryImpl implements TaskReportRepository {
 

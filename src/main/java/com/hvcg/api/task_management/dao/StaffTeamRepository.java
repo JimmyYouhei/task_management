@@ -7,8 +7,21 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.hvcg.api.task_management.entity.StaffTeam;
 
+
+/**
+ * 
+ * 
+ * Spring data JpaRepository to quickly handle staff-team assignment data and with default Spring Data Rest API exposure
+ * 
+ * some method were added with extra Annotation to restricted to ADMIN role only
+ * 
+ * @author JY
+ *
+ */
+
 public interface StaffTeamRepository extends JpaRepository<StaffTeam, Integer> {
 	
+	// Spring magic: the name of this method is not random
 	List<StaffTeam> findByTeamId(int id);
 	
 	

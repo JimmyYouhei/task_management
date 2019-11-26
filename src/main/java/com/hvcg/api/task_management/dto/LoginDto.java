@@ -2,6 +2,14 @@ package com.hvcg.api.task_management.dto;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * 
+ * Data transfer object to quickly handle JSON security data
+ * 
+ * @author JY
+ *
+ */
+
 public class LoginDto {
 
 	@NotNull

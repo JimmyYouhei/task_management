@@ -13,6 +13,15 @@ import com.hvcg.api.task_management.model.StaffReport;
 import com.hvcg.api.task_management.model.SubTaskInforWrapper;
 import com.hvcg.api.task_management.model.TaskCategoryInforWrapper;
 
+/**
+ * 
+ * RowMapper implement to use for Spring JDBC
+ * 
+ * @author JY
+ *
+ */
+
+
 public class StaffReportRowMapper implements RowMapper<StaffReport> {
 
 	@Override

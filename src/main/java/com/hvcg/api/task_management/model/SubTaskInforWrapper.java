@@ -4,6 +4,15 @@ import java.util.Date;
 
 import com.hvcg.api.task_management.constant.Status;
 
+
+/**
+ * 
+ * class to contain subtask report information
+ * 
+ * @author JY
+ *
+ */
+
 public class SubTaskInforWrapper {
 	
 	private String subtaskName;

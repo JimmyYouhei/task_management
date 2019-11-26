@@ -12,6 +12,13 @@ import com.hvcg.api.task_management.model.StaffReport;
 import com.hvcg.api.task_management.repository.util.OfficeReportRowMapper;
 import com.hvcg.api.task_management.service.StaffReportService;
 
+/**
+ * office report repository implementation to generate office report
+ * 
+ * @author JY
+ *
+ */
+
 @Repository
 public class OfficeReportRepositoryImpl implements OfficeReportRepository {
 	

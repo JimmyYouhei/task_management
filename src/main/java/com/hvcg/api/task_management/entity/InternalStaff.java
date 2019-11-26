@@ -16,6 +16,18 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+/**
+ * 
+ * 
+ * class to map staff table but to use internal to handle restricted method
+ * 
+ * JsonBackReference annotation is to avoid infinitive recursion 
+ * 
+ * @author JY
+ *
+ */
+
 @Entity
 @Table(name="staff")
 @JsonIgnoreProperties(ignoreUnknown = true)

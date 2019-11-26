@@ -17,6 +17,13 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+/**
+ * 
+ * Spring Security config class
+ * 
+ * @author JY
+ *
+ */
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)

@@ -7,6 +7,16 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.hvcg.api.task_management.entity.Project;
 
+/**
+ * 
+ * Spring data JpaRepository to quickly handle project data and with default Spring Data Rest API exposure
+ * 
+ * some method were added with extra Annotation to restricted to ADMIN role only
+ * 
+ * @author JY
+ *
+ */
+
 public interface ProjectRespository extends JpaRepository<Project, Integer> {
 	
 	@PreAuthorize("hasRole('ADMIN')")

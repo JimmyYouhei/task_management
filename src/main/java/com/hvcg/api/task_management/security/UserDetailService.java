@@ -13,6 +13,13 @@ import org.springframework.stereotype.Component;
 import com.hvcg.api.task_management.dao.SecurityRepository;
 import com.hvcg.api.task_management.entity.User;
 
+/**
+ * 
+ * Service to handle user detail
+ * 
+ * @author JY
+ *
+ */
 
 @Component
 public class UserDetailService implements UserDetailsService{

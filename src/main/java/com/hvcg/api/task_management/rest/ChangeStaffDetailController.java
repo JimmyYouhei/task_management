@@ -17,6 +17,14 @@ import com.hvcg.api.task_management.dto.StaffDetailDto;
 import com.hvcg.api.task_management.entity.InternalStaff;
 import com.hvcg.api.task_management.entity.User;
 
+/**
+ * 
+ * REST API for normal user to see and change their own staff information
+ * 
+ * @author JY
+ *
+ */
+
 @RestController
 @RequestMapping("/detail")
 public class ChangeStaffDetailController {

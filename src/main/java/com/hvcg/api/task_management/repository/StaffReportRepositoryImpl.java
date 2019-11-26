@@ -12,7 +12,16 @@ import com.hvcg.api.task_management.model.SubTaskInforWrapper;
 import com.hvcg.api.task_management.model.TaskCategoryInforWrapper;
 import com.hvcg.api.task_management.repository.util.StaffReportRowMapper;
 
-//TODO: TASK categories is wrong 
+/**
+ * 
+ * Staff Report Repository implementation to generate Staff Report
+ * 
+ * The full report is generated through many step to avoid missing information make the whole report null
+ *
+ * 
+ * @author JY
+ *
+ */
 
 @Repository
 public class StaffReportRepositoryImpl implements StaffReportRepository {

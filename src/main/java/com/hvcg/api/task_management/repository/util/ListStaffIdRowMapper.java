@@ -5,6 +5,14 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+/**
+ * 
+ * RowMapper implement to use for Spring JDBC
+ * 
+ * @author JY
+ *
+ */
+
 public class ListStaffIdRowMapper implements RowMapper<Integer> {
 
 	@Override

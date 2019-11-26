@@ -12,6 +12,13 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+/**
+ * 
+ * this class is to provide Json Web Token
+ * 
+ * @author JY
+ *
+ */
 
 @Component
 public class JwtProvider {

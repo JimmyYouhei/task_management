@@ -7,6 +7,17 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.hvcg.api.task_management.entity.Subtask;
 
+
+/**
+ * 
+ * Spring data JpaRepository to quickly handle subtask data and with default Spring Data Rest API exposure
+ * 
+ * some method were added with extra Annotation to restricted to ADMIN role only
+ * 
+ * @author JY
+ *
+ */
+
 public interface SubtaskRepository extends JpaRepository<Subtask, Integer> {
 	
 	@PreAuthorize("hasRole('ADMIN')")

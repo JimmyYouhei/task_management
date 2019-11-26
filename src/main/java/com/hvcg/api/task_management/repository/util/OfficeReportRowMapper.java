@@ -11,6 +11,14 @@ import com.hvcg.api.task_management.model.OfficeReport;
 import com.hvcg.api.task_management.model.StaffReport;
 import com.hvcg.api.task_management.service.StaffReportService;
 
+/**
+ * 
+ * RowMapper implement to use for Spring JDBC
+ * 
+ * @author JY
+ *
+ */
+
 public class OfficeReportRowMapper implements RowMapper<OfficeReport> {
 
 	InternalStaffRepository internalStaffRepository;

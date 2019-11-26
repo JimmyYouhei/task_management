@@ -7,8 +7,21 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.hvcg.api.task_management.entity.TeamProject;
 
+/**
+ * 
+ * Spring data JpaRepository to quickly handle team - project assignment data and with default Spring Data Rest API exposure
+ * 
+ * some method were added with extra Annotation to restricted to ADMIN role only
+ * 
+ * 
+ * @author JY
+ *
+ */
+
+
 public interface TeamProjectRepository extends JpaRepository<TeamProject, Integer> {
 
+	// Spring magic: the name of this method is not random
 	List<TeamProject> findByProjectId(int id);
 
 	

@@ -100,29 +100,6 @@ public class StaffReportRowMapper implements RowMapper<StaffReport> {
 			System.out.println(lackingColumn.getMessage());
 		}
 		
-		/*
-		try {
-			
-			staffReport.getTaskCategories().put(rs.getString("task_category_name"), rs.getString("task_category_description"));
-			
-		} catch (SQLException lackingColumn) {
-			System.out.println(lackingColumn.getMessage());
-		}
-		
-		try {
-			
-			SubTaskInforWrapper subtaskInfor = 
-					new SubTaskInforWrapper(rs.getString("subtask_description") , 
-							rs.getDate("date_start") , rs.getDate("date_finish") , Status.valueOf(rs.getString("status")));
-			
-			staffReport.getSubtasks().put(rs.getString("subtask_name") , subtaskInfor);
-			
-		} catch (SQLException lackingColumn) {
-			System.out.println(lackingColumn.getMessage());
-		}
-		
-		*/
-		
 		return staffReport;
 	}
 

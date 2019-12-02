@@ -3,6 +3,7 @@ package com.hvcg.api.task_management.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -31,31 +32,57 @@ public class StaffReportRepositoryImpl implements StaffReportRepository {
 	
 	@Override
 	public StaffReport getFullStaffReportById(int staffId) {
-		StaffReport result = getStaffBasicInforById(staffId);
+		StaffReport result = new StaffReport();
+		try {
+		result = getStaffBasicInforById(staffId);
+		}catch (EmptyResultDataAccessException noData) {
+			System.out.println(noData.getMessage());
+		}
 		
+		
+		try {
 		StaffReport loginDetail = getStaffLoginDetailById(staffId);
 		
 		result.setUsername(loginDetail.getUsername());
 		result.setRole(loginDetail.getRole());
+		} catch (EmptyResultDataAccessException noData) {
+			System.out.println(noData.getMessage());
+		}
+
 		
+		try {
 		StaffReport officeAddress = getStaffOfficeAddressById(staffId);
 		
 		result.setOfficeAddress(officeAddress.getOfficeAddress());
+		} catch (EmptyResultDataAccessException noData) {
+			System.out.println(noData.getMessage());
+		}
 		
 		
+		try {
 		StaffReport teams = getTeamsById(staffId);
 		
 		result.setTeams(teams.getTeams());
+		}catch (EmptyResultDataAccessException noData) {
+			System.out.println(noData.getMessage());
+		}
 		
-	
+		try {
 		StaffReport projectParticipated = getProjectsById(staffId);
 		
 		result.setProjectsParticipated(projectParticipated.getProjectsParticipated());
+		} catch (EmptyResultDataAccessException noData) {
+			System.out.println(noData.getMessage());
+		}
 		
+		
+		try {
 		StaffReport subtaskDetail = getSubtaskById(staffId);
 		
 		result.setSubtasksDetail(subtaskDetail.getSubtasksDetail());
-	
+		} catch (EmptyResultDataAccessException noData) {
+			System.out.println(noData.getMessage());
+		}
 		
 		return result;
 	}

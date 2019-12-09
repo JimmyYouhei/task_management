@@ -41,10 +41,12 @@ public class StaffTeam{
 	
 	@ManyToOne 
 	@JoinColumn(name= "staff_id")
+	@JsonBackReference("f")
 	private Staff staff;
 	
 	@ManyToOne
 	@JoinColumn(name ="team_id")
+	@JsonBackReference("g")
 	private Team team;
 	
 	

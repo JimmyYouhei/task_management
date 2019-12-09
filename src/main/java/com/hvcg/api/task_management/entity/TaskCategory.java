@@ -44,6 +44,7 @@ public class TaskCategory {
 	
 	@ManyToOne
 	@JoinColumn(name="project_id")
+	@JsonBackReference("gf")
 	private Project project;
 	
 	@Column(name="name")

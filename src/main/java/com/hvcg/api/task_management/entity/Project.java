@@ -1,6 +1,7 @@
 package com.hvcg.api.task_management.entity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -72,6 +73,9 @@ public class Project{
 	@OneToMany(mappedBy = "project" , cascade = CascadeType.ALL)
 	private Set<TaskCategory> taskCategories;
 	
+	@OneToMany(mappedBy = "project" , cascade = CascadeType.ALL)
+	private List<TeamProject> teamProject;
+	
 	public Project() {
 		
 	}
@@ -91,7 +95,20 @@ public class Project{
 		this.taskCategories = taskCategories;
 	}
 
-
+	public Project(int id, String name, String description, String note, Staff createBy, Date createTime,
+			Staff updateBy, Date updateTime, Set<TaskCategory> taskCategories, List<TeamProject> teamProject) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.note = note;
+		this.createBy = createBy;
+		this.createTime = createTime;
+		this.updateBy = updateBy;
+		this.updateTime = updateTime;
+		this.taskCategories = taskCategories;
+		this.teamProject = teamProject;
+	}
 
 
 	public int getId() {
@@ -169,6 +186,17 @@ public class Project{
 	public void setTaskCategories(Set<TaskCategory> taskCategories) {
 		this.taskCategories = taskCategories;
 	}
+
+
+	public List<TeamProject> getTeamProject() {
+		return teamProject;
+	}
+
+
+	public void setTeamProject(List<TeamProject> teamProject) {
+		this.teamProject = teamProject;
+	}
+	
 	
 
 }

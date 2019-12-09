@@ -1,7 +1,9 @@
 package com.hvcg.api.task_management.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -67,6 +70,8 @@ public class Subtask {
 	@Column(name="note")
 	private String note;
 	
+	@OneToMany(mappedBy = "subtask" , cascade = CascadeType.ALL)
+	private List<StaffSubtask> staffAssignedToSubtask;
 	
 	@ManyToOne
 	@JoinColumn(name="create_by" , referencedColumnName = "id")
@@ -103,6 +108,27 @@ public class Subtask {
 		this.dateFinish = dateFinish;
 		this.status = status;
 		this.note = note;
+		this.createBy = createBy;
+		this.createTime = createTime;
+		this.updateBy = updateBy;
+		this.updateTime = updateTime;
+	}
+	
+	
+
+	public Subtask(int id, String name, String description, TaskCategory taskCategory, Date dateStart, Date dateFinish,
+			Status status, String note, List<StaffSubtask> staffAssignedToSubtask, Staff createBy, Date createTime,
+			Staff updateBy, Date updateTime) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.taskCategory = taskCategory;
+		this.dateStart = dateStart;
+		this.dateFinish = dateFinish;
+		this.status = status;
+		this.note = note;
+		this.staffAssignedToSubtask = staffAssignedToSubtask;
 		this.createBy = createBy;
 		this.createTime = createTime;
 		this.updateBy = updateBy;
@@ -204,6 +230,15 @@ public class Subtask {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
+
+	public List<StaffSubtask> getStaffAssignedToSubtask() {
+		return staffAssignedToSubtask;
+	}
+
+	public void setStaffAssignedToSubtask(List<StaffSubtask> staffAssignedToSubtask) {
+		this.staffAssignedToSubtask = staffAssignedToSubtask;
+	}
+	
 	
 	
 }

@@ -1,7 +1,9 @@
 package com.hvcg.api.task_management.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,11 +46,13 @@ public class Team{
 	@Column(name="description")
 	private String description;
 	
+	@OneToMany(mappedBy = "team" , cascade = CascadeType.ALL)
+	private List<StaffTeam> staffTeamAssignments;
+	
 	@ManyToOne
 	@JoinColumn(name="create_by" , referencedColumnName = "id")
 	@JsonBackReference("a")
 	private Staff createBy;
-	
 	
 	@Column(name="create_time")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -73,6 +78,19 @@ public class Team{
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.createBy = createBy;
+		this.createTime = createTime;
+		this.updateBy = updateBy;
+		this.updateTime = updateTime;
+	}
+
+	public Team(int id, String name, String description, List<StaffTeam> staffTeamAssignments, Staff createBy,
+			Date createTime, Staff updateBy, Date updateTime) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.staffTeamAssignments = staffTeamAssignments;
 		this.createBy = createBy;
 		this.createTime = createTime;
 		this.updateBy = updateBy;
@@ -133,6 +151,14 @@ public class Team{
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public List<StaffTeam> getStaffTeamAssignments() {
+		return staffTeamAssignments;
+	}
+
+	public void setStaffTeamAssignments(List<StaffTeam> staffTeamAssignments) {
+		this.staffTeamAssignments = staffTeamAssignments;
 	}
 	
 }

@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * 
@@ -50,6 +51,7 @@ public class Office {
 	
 	@OneToOne
 	@JoinColumn(name="person_in_charge_id")
+	@JsonManagedReference("d")
 	private Staff personInCharge;
 	
 	@ManyToOne

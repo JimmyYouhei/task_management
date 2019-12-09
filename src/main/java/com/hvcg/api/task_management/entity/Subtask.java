@@ -20,6 +20,7 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hvcg.api.task_management.constant.Status;
 
 /**
@@ -71,6 +72,7 @@ public class Subtask {
 	private String note;
 	
 	@OneToMany(mappedBy = "subtask" , cascade = CascadeType.ALL)
+	@JsonManagedReference("f")
 	private List<StaffSubtask> staffAssignedToSubtask;
 	
 	@ManyToOne

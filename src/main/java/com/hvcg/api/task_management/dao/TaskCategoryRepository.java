@@ -20,6 +20,7 @@ import com.hvcg.api.task_management.entity.TaskCategory;
 
 public interface TaskCategoryRepository extends JpaRepository<TaskCategory, Integer> {
 	
+	List<TaskCategory> findByNameLike(String keyword);
 	
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override

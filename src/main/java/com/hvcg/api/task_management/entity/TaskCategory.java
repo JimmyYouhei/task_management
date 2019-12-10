@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 /**
@@ -77,6 +78,7 @@ public class TaskCategory {
 	private Date updateTime;
 	
 	@OneToMany(mappedBy = "taskCategory" , cascade = CascadeType.ALL)
+	@JsonManagedReference("subtask")
 	private Set<Subtask> subtasks;
 
 	public TaskCategory() {

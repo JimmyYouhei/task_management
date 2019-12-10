@@ -21,6 +21,8 @@ import com.hvcg.api.task_management.entity.Staff;
 
 public interface OfficeRepository extends JpaRepository<Office, Integer> {
 	
+	List<Office> findByAddressLike(String keyword);
+	
 	// Spring magic: the name of this method is not random
 	Optional<Staff> findByPersonInChargeId(int id);
 

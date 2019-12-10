@@ -20,6 +20,8 @@ import com.hvcg.api.task_management.entity.Subtask;
 
 public interface SubtaskRepository extends JpaRepository<Subtask, Integer> {
 	
+	List<Subtask> findByNameLike(String keyword);
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	void deleteById(Integer id);

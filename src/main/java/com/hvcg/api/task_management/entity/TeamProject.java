@@ -39,10 +39,12 @@ public class TeamProject{
 	
     @ManyToOne
     @JoinColumn(name = "team_id")
+    @JsonBackReference("team")
     private Team team;
  
     @ManyToOne
     @JoinColumn(name ="project_id")
+    @JsonBackReference("project")
     private Project project;
 	
 	@ManyToOne

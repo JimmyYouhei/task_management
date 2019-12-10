@@ -51,7 +51,7 @@ public class Office {
 	
 	@OneToOne
 	@JoinColumn(name="person_in_charge_id")
-	@JsonManagedReference("d")
+	@JsonBackReference("personInCharge")
 	private Staff personInCharge;
 	
 	@ManyToOne

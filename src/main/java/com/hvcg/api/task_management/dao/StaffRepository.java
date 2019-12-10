@@ -19,6 +19,8 @@ import com.hvcg.api.task_management.entity.Staff;
  */
 
 public interface StaffRepository extends JpaRepository<Staff, Integer> {
+	
+	List<Staff> findByFullNameLike(String name);
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override

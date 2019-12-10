@@ -21,6 +21,7 @@ import com.hvcg.api.task_management.entity.Team;
 
 public interface TeamRepository extends JpaRepository<Team, Integer> {
 
+	List<Team> findByNameLike(String keyword);
 	
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override

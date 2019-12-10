@@ -39,10 +39,12 @@ public class StaffSubtask {
 	
     @ManyToOne
     @JoinColumn(name = "staff_id")
+    @JsonBackReference("staff")
     private Staff staff;
  
     @ManyToOne
     @JoinColumn(name ="subtask_id")
+    @JsonBackReference("subtask")
     private Subtask subtask;
 	
 	@ManyToOne

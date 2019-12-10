@@ -19,6 +19,9 @@ import com.hvcg.api.task_management.entity.Project;
 
 public interface ProjectRespository extends JpaRepository<Project, Integer> {
 	
+	
+	List<Project> findByNameLike(String keyword);
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	void deleteById(Integer id);

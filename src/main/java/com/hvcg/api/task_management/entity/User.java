@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -44,6 +45,7 @@ public class User {
 	
 	@OneToOne
 	@JoinColumn(name = "staff_id")
+	@JsonBackReference("staff")
 	private InternalStaff staff;
 
 	public User() {

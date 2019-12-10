@@ -52,6 +52,7 @@ public class Subtask {
 	
 	@ManyToOne
 	@JoinColumn(name = "task_category_id")
+	@JsonBackReference("taskCategory")
 	private TaskCategory taskCategory;
 	
 	

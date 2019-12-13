@@ -78,7 +78,7 @@ public class TaskCategory {
 	private Date updateTime;
 	
 	@OneToMany(mappedBy = "taskCategory" , cascade = CascadeType.ALL)
-	@JsonManagedReference("subtask")
+	@JsonBackReference("subtask")
 	private Set<Subtask> subtasks;
 
 	public TaskCategory() {

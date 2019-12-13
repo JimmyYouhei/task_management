@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hvcg.api.task_management.constant.Status;
 
 /**
@@ -42,6 +42,7 @@ public class Subtask {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
+	@JsonProperty("id")
 	private int id;
 	
 	@Column(name="name")
@@ -52,7 +53,7 @@ public class Subtask {
 	
 	@ManyToOne
 	@JoinColumn(name = "task_category_id")
-	@JsonManagedReference("taskCategory")
+	@JsonBackReference("taskCategory")
 	private TaskCategory taskCategory;
 	
 	
@@ -73,7 +74,7 @@ public class Subtask {
 	private String note;
 	
 	@OneToMany(mappedBy = "subtask" , cascade = CascadeType.ALL)
-	@JsonManagedReference("f")
+	@JsonBackReference("f")
 	private List<StaffSubtask> staffAssignedToSubtask;
 	
 	@ManyToOne

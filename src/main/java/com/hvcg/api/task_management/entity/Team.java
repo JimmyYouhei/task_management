@@ -18,7 +18,6 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 /**
@@ -48,7 +47,7 @@ public class Team{
 	private String description;
 	
 	@OneToMany(mappedBy = "team" , cascade = CascadeType.ALL)
-	@JsonManagedReference("t")
+	@JsonBackReference("t")
 	private List<StaffTeam> staffTeamAssignments;
 	
 	@ManyToOne

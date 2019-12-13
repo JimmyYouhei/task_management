@@ -19,7 +19,6 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 /**
@@ -72,11 +71,11 @@ public class Project{
 	private Date updateTime;
 	
 	@OneToMany(mappedBy = "project" , cascade = CascadeType.ALL)
-	@JsonManagedReference("e")
+	@JsonBackReference("e")
 	private Set<TaskCategory> taskCategories;
 	
 	@OneToMany(mappedBy = "project" , cascade = CascadeType.ALL)
-	@JsonManagedReference("f")
+	@JsonBackReference("f")
 	private List<TeamProject> teamProject;
 	
 	public Project() {

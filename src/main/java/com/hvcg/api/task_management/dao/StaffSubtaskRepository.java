@@ -5,6 +5,8 @@ package com.hvcg.api.task_management.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.hvcg.api.task_management.entity.StaffSubtask;
@@ -22,6 +24,18 @@ import com.hvcg.api.task_management.entity.StaffSubtask;
 
 public interface StaffSubtaskRepository extends JpaRepository<StaffSubtask, Integer> {
 
+	@Query("select s from StaffSubtask s where s.staff.id = :staffId " +
+			"and month(s.createTime) = :month and year(s.createTime) = :year")
+	List<StaffSubtask> queryByStaffIdAndMonth(@Param("staffId") int staffId ,
+											  @Param("month") int month,
+											  @Param("year") int year);
+
+	@Query("select s from StaffSubtask s where s.staff.id = :staffId " +
+			"and month(s.subtask.dateFinish) = :month and year(s.subtask.dateFinish) = :year " +
+			"and s.subtask.status = 'FINISHED' ")
+	List<StaffSubtask> queryFinishByStaffIdAndMonth(@Param("staffId") int staffId,
+													@Param("month") int month,
+													@Param("year") int year);
 	@PreAuthorize("hasRole('ADMIN')")
 	@Override
 	void deleteById(Integer id);

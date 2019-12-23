@@ -1,11 +1,10 @@
 package com.hvcg.api.task_management.rest;
 
 import com.hvcg.api.task_management.constant.Status;
+import com.hvcg.api.task_management.dao.ProjectRespository;
 import com.hvcg.api.task_management.dao.StaffSubtaskRepository;
 import com.hvcg.api.task_management.dao.SubtaskRepository;
-import com.hvcg.api.task_management.entity.Staff;
-import com.hvcg.api.task_management.entity.StaffSubtask;
-import com.hvcg.api.task_management.entity.Subtask;
+import com.hvcg.api.task_management.entity.*;
 import com.hvcg.api.task_management.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,7 +14,10 @@ import com.hvcg.api.task_management.service.OfficeReportService;
 import com.hvcg.api.task_management.service.StaffReportService;
 import com.hvcg.api.task_management.service.TaskReportService;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 
@@ -44,6 +46,9 @@ public class ReportRestController {
 
 	@Autowired
 	private StaffSubtaskRepository staffSubtaskRepository;
+
+	@Autowired
+	private ProjectRespository projectRespository;
 	
 	@GetMapping("/staff/{staffId}")
 	public StaffReport getStaffReportById(@PathVariable int staffId) {
@@ -132,5 +137,73 @@ public class ReportRestController {
 	public OfficeTaskReportInforWrapper getOfficeTaskReport(@PathVariable int officeId) {
 		return taskReportService.getOfficeTaskReport(officeId);
 	}
+
+	@GetMapping("/task/project/{projectId}/count")
+	public  TaskReportWithStatus  getTaskStatusReportByProject(@PathVariable int projectId){
+		Project project = projectRespository.getOne(projectId);
+
+		Set<TaskCategory> taskCategoriesOfProject = project.getTaskCategories();
+
+		int totalTask = 0;
+		int totalNotStartedTask = 0;
+		int totalInProgressTask = 0;
+		int totalFinishTask = 0;
+
+		for (TaskCategory aTaskCategory : taskCategoriesOfProject){
+			Set<Subtask> subtasks = aTaskCategory.getSubtasks();
+
+			for(Subtask aSubTask : subtasks) {
+
+				totalTask++;
+
+				switch (aSubTask.getStatus()){
+					case NOT_STARTED:
+						totalNotStartedTask++;
+						break;
+
+					case IN_PROGRESS:
+						totalInProgressTask++;
+						break;
+
+					case FINISHED:
+						totalFinishTask++;
+						break;
+
+					default:
+				}
+
+			}
+		}
+
+		TaskReportWithStatus taskReportWithStatus = new TaskReportWithStatus(totalTask ,
+				totalNotStartedTask , totalInProgressTask , totalFinishTask);
+
+		return taskReportWithStatus;
+	}
+
+	@GetMapping("task/projects/count")
+    public List<ProjectWithTaskStatusReport> getProjectAndTaskStatusReport (){
+
+	    List<Project> allProject = projectRespository.findAll();
+
+	    List<ProjectWithTaskStatusReport> report = new ArrayList<>();
+
+	    if(allProject.size() < 1){
+	        return null;
+        }
+
+	    for (Project project : allProject){
+	        TaskReportWithStatus taskReportWithStatus = getTaskStatusReportByProject(project.getId());
+
+	        ProjectWithTaskStatusReport projectWithTaskStatusReport = new ProjectWithTaskStatusReport(
+	                project , taskReportWithStatus
+            );
+
+	        report.add(projectWithTaskStatusReport);
+        }
+
+	    return report;
+
+    }
 	
 }

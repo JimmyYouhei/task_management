@@ -62,6 +62,13 @@ public class UserService {
 		jsonToken.append("{");
 		jsonToken.append(System.lineSeparator());
 		jsonToken.append("\"");
+		jsonToken.append("id");
+		jsonToken.append("\"");
+		jsonToken.append(" : ");
+		jsonToken.append(user.get().getId());
+		jsonToken.append(" , ");
+		jsonToken.append(System.lineSeparator());
+		jsonToken.append("\"");
 		jsonToken.append("token");
 		jsonToken.append("\"");
 		jsonToken.append(" : ");
@@ -69,6 +76,7 @@ public class UserService {
 		jsonToken.append(token.get());
 		jsonToken.append("\"");
 		jsonToken.append(System.lineSeparator());
+		
 		jsonToken.append("}");
 		
 		return Optional.of(jsonToken.toString());

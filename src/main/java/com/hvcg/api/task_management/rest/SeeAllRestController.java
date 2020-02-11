@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hvcg.api.task_management.dao.ProjectRespository;
 import com.hvcg.api.task_management.dao.SubtaskRepository;
 import com.hvcg.api.task_management.dao.TeamRepository;
+import com.hvcg.api.task_management.dto.TeamAndAssignment;
 import com.hvcg.api.task_management.entity.Project;
 import com.hvcg.api.task_management.entity.Staff;
 import com.hvcg.api.task_management.entity.StaffSubtask;
@@ -34,7 +35,7 @@ public class SeeAllRestController {
 	TeamRepository teamRepository;
 
 	@GetMapping("/all/team/project/{projectId}")
-	public List<Team> getAllTeamFromProject(@PathVariable int projectId){
+	public List<TeamAndAssignment> getAllTeamFromProject(@PathVariable int projectId){
 		
 		Project thisProject = projectRespository.getOne(projectId);
 		
@@ -44,13 +45,15 @@ public class SeeAllRestController {
 			return null;
 		}
 		
-		List<Team> result = new ArrayList<Team>();
+		List<TeamAndAssignment> result = new ArrayList<TeamAndAssignment>();
 		
 		for(TeamProject aTeamProject : allTeamProjects) {
 			
 			Team aTeam = aTeamProject.getTeam();
 			
-			result.add(aTeam);
+			TeamAndAssignment toReturn = new TeamAndAssignment(aTeam, aTeamProject);
+			
+			result.add(toReturn);
 			
 		}
 		

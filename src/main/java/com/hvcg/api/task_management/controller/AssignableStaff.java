@@ -1,4 +1,4 @@
-package com.hvcg.api.task_management.rest;
+package com.hvcg.api.task_management.controller;
 
 
 import java.util.ArrayList;

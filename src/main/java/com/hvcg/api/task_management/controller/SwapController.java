@@ -1,4 +1,4 @@
-package com.hvcg.api.task_management.rest;
+package com.hvcg.api.task_management.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

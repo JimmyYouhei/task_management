@@ -60,6 +60,7 @@ public class UserService {
 		
 		StringBuilder jsonToken = new StringBuilder();
 		jsonToken.append("{");
+		
 		jsonToken.append(System.lineSeparator());
 		jsonToken.append("\"");
 		jsonToken.append("id");
@@ -68,6 +69,16 @@ public class UserService {
 		jsonToken.append(user.get().getId());
 		jsonToken.append(" , ");
 		jsonToken.append(System.lineSeparator());
+		
+		jsonToken.append("\"");
+		jsonToken.append("staffId");
+		jsonToken.append("\"");
+		jsonToken.append(" : ");
+		jsonToken.append(user.get().getStaff().getId());
+		jsonToken.append(" , ");
+		jsonToken.append(System.lineSeparator());
+		
+		
 		jsonToken.append("\"");
 		jsonToken.append("token");
 		jsonToken.append("\"");

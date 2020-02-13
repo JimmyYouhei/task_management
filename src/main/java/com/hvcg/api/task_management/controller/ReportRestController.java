@@ -1,23 +1,34 @@
-package com.hvcg.api.task_management.rest;
+package com.hvcg.api.task_management.controller;
 
-import com.hvcg.api.task_management.constant.Status;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.hvcg.api.task_management.dao.ProjectRespository;
 import com.hvcg.api.task_management.dao.StaffSubtaskRepository;
 import com.hvcg.api.task_management.dao.SubtaskRepository;
-import com.hvcg.api.task_management.entity.*;
-import com.hvcg.api.task_management.model.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
-
+import com.hvcg.api.task_management.entity.Project;
+import com.hvcg.api.task_management.entity.StaffSubtask;
+import com.hvcg.api.task_management.entity.Subtask;
+import com.hvcg.api.task_management.entity.TaskCategory;
+import com.hvcg.api.task_management.model.OfficeReport;
+import com.hvcg.api.task_management.model.OfficeTaskReportInforWrapper;
+import com.hvcg.api.task_management.model.ProjectWithTaskStatusReport;
+import com.hvcg.api.task_management.model.StaffReport;
+import com.hvcg.api.task_management.model.TaskReportInforWrapper;
+import com.hvcg.api.task_management.model.TaskReportStatusStaff;
+import com.hvcg.api.task_management.model.TaskReportWithStatus;
 import com.hvcg.api.task_management.service.OfficeReportService;
 import com.hvcg.api.task_management.service.StaffReportService;
 import com.hvcg.api.task_management.service.TaskReportService;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 /**
  * 

@@ -2,6 +2,7 @@ package com.hvcg.api.task_management;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Main run class that is auto created by SpringBoot
@@ -13,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
+@EnableSwagger2
+
 public class TaskManagementApplication {
 
 
